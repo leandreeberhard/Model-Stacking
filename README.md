@@ -14,7 +14,7 @@ The three models that are stacked together are
 * An XGBoost classifier with parameters `max_depth = 6` and `eta = 0.8`
 * A KNN classifier using 10 nearest neighbors, with the influence of each neighbor on the final prediction weighted by the distance from the point to be predicted 
 
-A so-called "meta-leaner" then takes the predictions from these three models and uses these as predictors to make a final prediction. Here, a simple logistic regression with L2 regularization is used as the meta-learner. 
+A so-called "meta-learner" then takes the predictions from these three models and uses these as predictors to make a final prediction. Here, a simple logistic regression with L2 regularization is used as the meta-learner. 
 
 To train the ensemble model, the training data set is first divided up into 10 disjoint folds. Then, the three models, which we train on the data not in the fold, make a prediction for the data points in the fold. We assemble all of these predictions into a new matrix with three columns and one prediction for each point in the training set from the three individual models. Finally, the meta-learner is trained on this new matrix.
 
